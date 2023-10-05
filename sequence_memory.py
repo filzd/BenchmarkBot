@@ -1,5 +1,6 @@
 import pyautogui
 import time
+import keyboard
 
 def sequence_memory():
    positions = [
@@ -20,6 +21,10 @@ def sequence_memory():
    flash_time = None
    
    while True:
+        if keyboard.is_pressed('q'):
+           print("Exiting program...")
+           break
+       
         for position in positions:
             if pyautogui.pixelMatchesColor(position[0], position[1], (24, 26, 27)):
                 
@@ -33,8 +38,6 @@ def sequence_memory():
                 
                 click_positions.clear()
                 flash_time = None
-            
-        time.sleep(0.01)
 
 
 if __name__ == "__main__":
