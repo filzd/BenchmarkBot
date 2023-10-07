@@ -15,17 +15,17 @@ def verbal_memory():
             break
         
         # get the word using screenshot
+        # TODO: coordinates
         pyautogui.screenshot()
         screenshot = pyautogui.screenshot(region=(1000, 365, 1537, 437))
-        screenshot = pyautogui.screenshot("word.png")
-        word = pytesseract.image_to_string("word.png")
+        word = pytesseract.image_to_string(screenshot, lang="eng", config="--psm 6")
         
         # if seen
         if word in seen:
-            pyautogui.click(x=1200, y=480)
+            pyautogui.click(x=1850, y=480)
         # if not seen
         elif word not in seen:
-            pyautogui.click(x=1337, y=480)
+            pyautogui.click(x=2000, y=480)
             seen.append(word)
 
 
